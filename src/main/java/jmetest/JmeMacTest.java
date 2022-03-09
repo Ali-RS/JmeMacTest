@@ -30,7 +30,7 @@ public class JmeMacTest extends SimpleApplication {
 
         rootNode.attachChild(geom);
 
-        ErrorDialog.showDialog("This is a test dialog!");
+        ErrorDialog.showDialog("This is a test dialog! \nMetal Render Enabled: " + System.getProperty("sun.java2d.metal", "false"));
     }
 
     @Override
