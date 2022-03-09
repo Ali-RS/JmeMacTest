@@ -1,0 +1,55 @@
+plugins {
+    id 'application'
+    id 'java'
+}
+
+description = 'JmeMacTest application'
+
+java {
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+}
+
+ext.jmonkeyengineVersion = '3.5.0-stable'
+
+mainClassName = 'jmetest.JmeMacTest'
+if (!hasProperty('mainClass')) {
+    ext.mainClass = mainClassName
+}
+jar.manifest.attributes('Main-Class': mainClassName)
+
+application {
+    applicationDefaultJvmArgs = [
+            '-Dsun.java2d.metal=true'
+    ]
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    jcenter() //jcentre is likely to stop working soon, but for now it is required for certain dependencies
+}
+
+dependencies {
+    // You can read more about how to add dependencies here:
+    //   https://docs.gradle.org/current/userguide/dependency_management.html#sec:how_to_declare_your_dependencies
+
+    implementation 'org.jmonkeyengine:jme3-core:' + jmonkeyengineVersion
+    implementation 'org.jmonkeyengine:jme3-desktop:' + jmonkeyengineVersion
+    runtimeOnly 'org.jmonkeyengine:jme3-lwjgl3:' + jmonkeyengineVersion
+}
+
+// cleanup tasks
+clean.dependsOn('cleanDLLs', 'cleanDyLibs', 'cleanLogs', 'cleanSOs')
+task cleanDLLs(type: Delete) {
+    delete fileTree(dir: '.', include: '*.dll')
+}
+task cleanDyLibs(type: Delete) {
+    delete fileTree(dir: '.', include: '*.dylib')
+}
+task cleanLogs(type: Delete) {
+    delete fileTree(dir: '.', include: 'hs_err_pid*.log')
+}
+task cleanSOs(type: Delete) {
+    delete fileTree(dir: '.', include: '*.so')
+}
