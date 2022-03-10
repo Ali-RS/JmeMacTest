@@ -20,6 +20,7 @@ jar.manifest.attributes('Main-Class': mainClassName)
 
 application {
     applicationDefaultJvmArgs = [
+            '-XstartOnFirstThread',
             '-Dsun.java2d.metal=true'
     ]
 }
