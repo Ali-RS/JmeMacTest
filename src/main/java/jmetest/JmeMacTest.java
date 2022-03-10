@@ -8,6 +8,8 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.shape.Box;
 import com.jme3.system.ErrorDialog;
 
+import javax.swing.*;
+
 /**
  * This is the Main Class of your Game. It should boot up your game and do initial initialisation
  * Move your Logic into AppStates or Controls or other java classes
@@ -30,7 +32,9 @@ public class JmeMacTest extends SimpleApplication {
 
         rootNode.attachChild(geom);
 
-        ErrorDialog.showDialog("This is a test dialog! \nMetal Render Enabled: " + System.getProperty("sun.java2d.metal", "false"));
+        //Schedule dialog for the event-dispatching thread:
+        SwingUtilities.invokeLater(() ->
+                ErrorDialog.showDialog("This is a test error dialog! \nMetal Render Enabled: " + System.getProperty("sun.java2d.metal", "false")));
     }
 
     @Override

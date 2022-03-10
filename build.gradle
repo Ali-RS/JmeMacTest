@@ -21,7 +21,8 @@ jar.manifest.attributes('Main-Class': mainClassName)
 application {
     applicationDefaultJvmArgs = [
             '-XstartOnFirstThread',
-            '-Dsun.java2d.metal=true'
+            '-Dsun.java2d.metal=true',
+            '-Djava.awt.headless=false' // FIXME: is this required?
     ]
 }
 
