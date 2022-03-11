@@ -1,4 +1,11 @@
 package jmetest;
+/*
+ *  Copyright (c) 2022, Ali-RS
+ *  All rights reserved.
+ *
+ *  This source code is licensed under the BSD-style license found in the
+ *  LICENSE file in the root directory of this source tree.
+ */
 
 import com.jme3.app.SimpleApplication;
 import com.jme3.material.Material;
@@ -11,8 +18,7 @@ import com.jme3.system.ErrorDialog;
 import javax.swing.*;
 
 /**
- * This is the Main Class of your Game. It should boot up your game and do initial initialisation
- * Move your Logic into AppStates or Controls or other java classes
+ * A JME app for testing LWJGL3 + Swing (with JEP 382: New macOS Rendering Pipeline) issues on macOS.
  */
 public class JmeMacTest extends SimpleApplication {
 
